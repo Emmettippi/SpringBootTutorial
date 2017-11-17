@@ -12,7 +12,7 @@ import it.objectmethod.world.repo.CityRepository;
 
 @Controller
 public class WelcomeController {
-
+/*
 	// inject via application.properties
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
@@ -29,5 +29,5 @@ public class WelcomeController {
 		model.put("message", city.getName());
 		return "welcome";
 	}
-
+*/
 }

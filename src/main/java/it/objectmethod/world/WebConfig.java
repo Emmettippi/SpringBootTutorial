@@ -14,11 +14,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "it.objectmethod.world")
 public class WebConfig extends WebMvcConfigurerAdapter{
-	
-	@Bean
-	public HelloWorld helloWorld() {
-		return new HelloWorld();
-	}
 
 	@Bean
     public InternalResourceViewResolver internalViewResolver() {
