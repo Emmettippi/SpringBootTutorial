@@ -21,7 +21,7 @@ public class City {
 	private Long id;
 	private String name;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "CountryCode")
+	@JoinColumn(name = "countrycode")
 	@Fetch(FetchMode.JOIN)
 	private Country country;
 	private int population;
