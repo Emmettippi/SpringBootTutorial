@@ -18,9 +18,14 @@ public class CityController {
 	private CityRepository cityRepo;
 
 	@RequestMapping("/show_city_list_per_country")
-	public String showCityListPerCountry(Map<String, Object> model,@RequestParam("countryCode") String countryCode) {
-		List<City> cityList = cityRepo.getCityListFromCountry(countryCode) ;
-		model.put("message", cityList);
+	public String showCityListPerCountry(Map<String, Object> model,
+			@RequestParam("countryCode") String countryCode,
+			@RequestParam("countryName") String countryName) {
+		System.out.println("Almeno prima della query ci arriva?");
+		List<City> cityList = cityRepo.getCityListFromCountry(countryCode);
+		System.out.println("Almeno dopo la query ci arriva?");
+		model.put("countryName", countryName);
+		model.put("cityList", cityList);
 		return "CityListPerCountry";
 	}
 }

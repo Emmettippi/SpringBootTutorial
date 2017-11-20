@@ -1,9 +1,16 @@
 package it.objectmethod.world.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="city")
@@ -13,21 +20,17 @@ public class City {
 	@Id
 	private Long id;
 	private String name;
-	private String countryCode;
-	private String district;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "CountryCode")
+	@Fetch(FetchMode.JOIN)
+	private Country country;
 	private int population;
-	
-	public String getCountryCode() {
-		return countryCode;
+
+	public Country getCountry() {
+		return country;
 	}
-	public void setCountryCode(String countryCode) {
-		this.countryCode = countryCode;
-	}
-	public String getDistrict() {
-		return district;
-	}
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 	public int getPopulation() {
 		return population;

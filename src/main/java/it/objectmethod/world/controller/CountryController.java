@@ -26,9 +26,11 @@ public class CountryController {
 	}
 
 	@RequestMapping("/show_country_list_per_continent")
-	public String showCountryListPerContinent(Map<String, Object> model,@RequestParam("continent") String continent) {
-		List<Country> cityList = countryRepo.getCountryListFromContinent(continent) ;
-		model.put("message", cityList);
+	public String showCountryListPerContinent(Map<String, Object> model,
+			@RequestParam("continent") String continent) {
+		List<Country> countryList = countryRepo.getCountryListFromContinent(continent);
+		model.put("continent", continent);//superfluo?
+		model.put("countryList", countryList);
 		return "CountryListPerContinent";
 	}
 }

@@ -12,8 +12,7 @@
 	<p>Ecco la lista dei continenti!</p>
 	<ul>
 		<c:forEach items="${continentList}" var="riga">
-			<li><a
-				href="show_country_list_per_continent?continent=${riga}">${riga}</a></li>
+			<li><a href="show_country_list_per_continent?continent=${riga}">${riga}</a></li>
 		</c:forEach>
 	</ul>
 </body>
