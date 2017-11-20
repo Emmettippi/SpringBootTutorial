@@ -5,22 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista delle città della nazione ${countryName}</title>
+<title>Operazione eseguita con successo</title>
 </head>
 <body>
+	<h2>L'operazione è stata eseguita con successo!</h2>
+	<br><br>
 	<p><a href="home">Torna alla home</a></p>
-	<p>La nazione ${countryName} possiede le seguenti città e relativa popolazione</p>
-	<table>
-	<tr>
-		<th>Nome Città</th>
-		<th>Popolazione</th>
-	</tr>
-		<c:forEach items="${cityList}" var="riga">
-			<tr>
-				<td>${riga.name}</td>
-				<td>${riga.population}</td>
-			</tr>
-		</c:forEach>
-	</table>
 </body>
 </html>

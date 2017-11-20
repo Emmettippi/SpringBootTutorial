@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Lista delle nazioni del continente ${continent}</title>
 </head>
 <body>
 	<p><a href="home">Torna alla home</a></p>

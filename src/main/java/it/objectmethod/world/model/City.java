@@ -1,6 +1,5 @@
 package it.objectmethod.world.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,10 +20,11 @@ public class City {
 	private Long id;
 	private String name;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "CountryCode")
+	@JoinColumn(name = "countrycode")
 	@Fetch(FetchMode.JOIN)
 	private Country country;
-	private int population;
+	private Long population;
+	private String district;
 
 	public Country getCountry() {
 		return country;
@@ -32,10 +32,10 @@ public class City {
 	public void setCountry(Country country) {
 		this.country = country;
 	}
-	public int getPopulation() {
+	public Long getPopulation() {
 		return population;
 	}
-	public void setPopulation(int population) {
+	public void setPopulation(Long population) {
 		this.population = population;
 	}
 	public Long getId() {
@@ -49,5 +49,11 @@ public class City {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 }

@@ -13,4 +13,7 @@ public interface CountryRepository extends  JpaRepository<Country, String>{
 	
 	@Query(value="SELECT * FROM world.country WHERE Continent=?1 ORDER BY Name ASC", nativeQuery=true)
 	public List<Country> getCountryListFromContinent(String continent);
+	
+	@Query(value="SELECT * FROM world.country ORDER BY Name ASC", nativeQuery=true)
+	public List<Country> findAllOrderedByName();
 }
