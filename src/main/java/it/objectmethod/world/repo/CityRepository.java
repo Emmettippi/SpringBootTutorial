@@ -13,4 +13,7 @@ public interface CityRepository extends JpaRepository<City, Long>{
 	
 	@Query(value="SELECT * FROM world.city WHERE Name=?1", nativeQuery=true)
 	public City getCityFromName(String name);
+	
+	@Query(value="SELECT * FROM world.city WHERE Name=?1 AND CountryCode=?2", nativeQuery=true)
+	public City getCityFromNameAndCountry(String name,String countryCode);
 }

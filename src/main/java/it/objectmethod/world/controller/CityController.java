@@ -27,31 +27,28 @@ public class CityController {
 	private CountryRepository countryRepo;
 
 	@RequestMapping("/show_city_list_per_country")
-	public String showCityListPerCountry(Map<String, Object> model,
+	public String showCityListPerCountry(ModelMap model,
 			@RequestParam("countryCode") String countryCode,
 			@RequestParam("countryName") String countryName) {
-		//System.out.println("Almeno prima della query ci arriva?");
 		List<City> cityList = cityRepo.getCityListFromCountry(countryCode);
-		//System.out.println("Almeno dopo la query ci arriva?");
-		/*
-		City c = new City();
-		c.setName("Busto arsizio");
-		c = cityRepo.save(c);
-		 */
 		model.put("countryName", countryName);
 		model.put("cityList", cityList);
 		return "CityListPerCountry";
 	}
 
-	@RequestMapping("/insert_new_city")
-	public String insertNewCity(Map<String, Object> model) {
+	@RequestMapping(value="/form_insert_new_city")
+	public String formInsertNewCity(ModelMap model) {
 		List<Country> cntList = countryRepo.findAll(new Sort("Name"));
 		model.put("countryList", cntList);
-		return "InsertNewCity";
+		return "FormInsertNewCity";
 	}
-
-	@RequestMapping("/confirm_action")
-	public String checkNewCity(ModelMap model,
+	
+	@RequestMapping(value="/form_insert_new_city",
+			params= {"cityName",
+					"countryCode",
+					"cityPopulation",
+					"cityDistrict"})
+	public String formCheckInsertNewCity(ModelMap model,
 			@RequestParam("cityName") String cityName,
 			@RequestParam("countryCode") String countryCode,
 			@RequestParam("cityPopulation") String cityPopulation,
@@ -61,38 +58,33 @@ public class CityController {
 		res.setMessage(OperationResult.SUCCESS);
 		
 		City newCity = new City();
-
-		if(cityName == null
-				|| cityName.trim().equals("")) {
+		
+		if(cityName == null || cityName.trim().equals("")) {
 			res.setSuccess(false);
-			res.setMessage("Inserire una città valida.");
-		} else {
+			res.setMessage(OperationResult.INSUCCESS);
+		}
+		else {
 			newCity.setName(cityName.trim());
 		}
 		
-		if(cityDistrict.equals("")) {
-			error.setCityDistrict(true);
+		if(cityDistrict == null || cityDistrict.trim().equals("")) {
+			res.setSuccess(false);
+			res.setMessage(OperationResult.INSUCCESS);
 		}
+		else {
+			newCity.setDistrict(cityDistrict.trim());
+		}
+		
 		newCity.setDistrict(cityDistrict);
 		try {
 			newCity.setPopulation(Long.parseLong(cityPopulation));
 		}catch(Exception e) {
-			e.printStackTrace();
-			error.setCityPopulation(true);
+			res.setSuccess(false);
+			res.setMessage(OperationResult.INSUCCESS);
 		}
 		newCity.setCountry(countryRepo.findOne(countryCode));
-		if(newCity.getCountry().getCode().equals("")) {
-			error.setCityCountry(true);
-		}
-//		List<City> cityList = cityRepo.findAll();
-//		error.setCityNameAlreadyExists(false);
-//		for(int i=0;i<cityList.size();i++) {
-//			if(cityList.get(i).getName().equals(cityName)) {
-//				error.setCityNameAlreadyExists(true);
-//			}
-//		}
 		
-		City checkCity = cityRepo.getCityFromName(name);
+		City checkCity = cityRepo.getCityFromNameAndCountry(newCity.getName(),newCity.getCountry().getCode());
 		if(checkCity != null) {
 			res.setSuccess(false);
 			res.setMessage("Città già presente.");
@@ -101,19 +93,11 @@ public class CityController {
 		if(res.isSuccess()) {
 			cityRepo.save(newCity);
 		}
-		
+		model.put("cityName", cityName.trim());
+		model.put("cityDistrict", cityDistrict.trim());
+		model.put("cityPopulation", cityPopulation.trim());
 		model.put("result", res);
-		return "CityInsertResult";
-//		if(error.cityAtLeastOneError()) {
-//			model.put("cityName", cityName);
-//			model.put("cityPopulation", cityPopulation);
-//			model.put("cityDistrict", cityDistrict);
-//			model.put("error", error);
-//			return insertNewCity(model);
-//		}
-//		else {
-//			
-//			return "CorrectOperation";
-//		}
+		
+		return formInsertNewCity(model);
 	}
 }

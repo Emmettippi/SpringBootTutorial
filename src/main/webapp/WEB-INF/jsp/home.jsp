@@ -15,6 +15,6 @@
 			<li><a href="show_country_list_per_continent?continent=${riga}">${riga}</a></li>
 		</c:forEach>
 	</ul><br><br>
-	<p><a href="insert_new_city">Clicca qui</a> per inserire una nuova città</p>
+	<p><a href="form_insert_new_city">Clicca qui</a> per inserire una nuova città</p>
 </body>
 </html>
