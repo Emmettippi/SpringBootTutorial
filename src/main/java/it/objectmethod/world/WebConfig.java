@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -14,16 +15,23 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "it.objectmethod.world")
 public class WebConfig extends WebMvcConfigurerAdapter{
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		String path="classpath:/resources/static";
+		if (!registry.hasMappingForPattern("/js/**")) {
+			registry.addResourceHandler("/js/**").addResourceLocations(path+"/js/");
+		}
+	}
 
 	@Bean
-    public InternalResourceViewResolver internalViewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
-        viewResolver.setOrder(1);
-        return viewResolver;
-    }
-	
+	public InternalResourceViewResolver internalViewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/WEB-INF/jsp/");
+		viewResolver.setSuffix(".jsp");
+		viewResolver.setOrder(1);
+		return viewResolver;
+	}
+
 	@Bean
 	public TomcatEmbeddedServletContainerFactory tomcatFactory() {
 		return new TomcatEmbeddedServletContainerFactory() {
@@ -35,4 +43,6 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 			}
 		};
 	}
+
+
 }
