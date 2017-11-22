@@ -8,7 +8,7 @@
 <title>Inserisci nuova città</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="FormController.js"></script> -->
-<script>
+<script> <!-- LO BEN SO che lo script javascript non va qui, ma l'ho momentaneamente messo per vedere se il codice in questione almeno è corretto! -->
 $(document).ready(function(){
 	function isValidateForm(){
 		return (isValideString($("#cityName").val()) && isValideString($("#cityDistrict").val()) && $("#cityPopulation").val().isNumeric());
@@ -52,6 +52,8 @@ $(document).ready(function(){
 	setDefaultCityName();
 	setDefaultCityPopulation();
 	setDefaultCityDistrict();
+	<!-- Fino a qui le funzioni non funzionano / non vengono chiamate-->
+	<!-- Da qui funzionano-->
 	$("input").focus(function(){
 		$(this).css("background-color", "#cccccc");
 	});
