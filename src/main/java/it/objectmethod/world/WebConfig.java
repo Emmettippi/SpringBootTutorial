@@ -1,6 +1,8 @@
 package it.objectmethod.world;
 
 import org.apache.catalina.startup.Tomcat;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
@@ -15,12 +17,30 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "it.objectmethod.world")
 public class WebConfig extends WebMvcConfigurerAdapter{
+
+	//Logger log = Logger.getLogger(this.getClass());
+
+	@Value("${frontend.allpath}")
+	private String path;
+	
+	@Value("${frontend.js.path}")
+	private String jsPath;
+	
+	@Value("${frontend.css.path}")
+	private String cssPath;
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String path="classpath:/resources/static";
+		//log.debug("Path js: "+path);
 		if (!registry.hasMappingForPattern("/js/**")) {
-			registry.addResourceHandler("/js/**").addResourceLocations(path+"/js/");
+			registry.addResourceHandler("/js/**").addResourceLocations("file:"+jsPath);
 		}
+		if (!registry.hasMappingForPattern("/css/**")) {
+			registry.addResourceHandler("/css/**").addResourceLocations("file:"+cssPath);
+		}/*
+        if (!registry.hasMappingForPattern("/webjars/**")) {
+            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        }*/
 	}
 
 	@Bean

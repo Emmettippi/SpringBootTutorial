@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import it.objectmethod.world.repo.CountryRepository;
 @Controller
 public class CityController {
 
+	Logger log = Logger.getLogger(this.getClass());
 	@Autowired
 	private CityRepository cityRepo;
 
@@ -79,6 +81,7 @@ public class CityController {
 		try {
 			newCity.setPopulation(Long.parseLong(cityPopulation));
 		}catch(Exception e) {
+			log.error("Errore di parseLong: ",e);
 			res.setSuccess(false);
 			res.setMessage(OperationResult.INSUCCESS);
 		}

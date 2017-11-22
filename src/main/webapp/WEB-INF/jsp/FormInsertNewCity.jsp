@@ -7,34 +7,9 @@
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 			<title>Inserisci nuova citt&#224</title>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-			<!-- <script type="text/javascript" th:src="@{js/FormController.js}"></script> -->
-			<script>
-				function validateForm(){
-					var error=false;
-					var cityname = $("#cityName").val();
-					$("#cityNameWarning").hide();
-					$("#cityPopulationWarning").hide();
-					$("#cityDistrictWarning").hide();
-					if(cityname==undefined || cityname.trim()==''){
-						$("#cityNameWarning").show();
-						error=true;
-					}
-					var citypop = $("#cityPopulation").val();
-					if(citypop==undefined || citypop.trim()=='' || isNaN(citypop)){
-						$("#cityPopulationWarning").show();
-						error=true;
-					}
-					var citydis = $("#cityDistrict").val();
-					if(citydis==undefined || citydis.trim()==''){
-						$("#cityDistrictWarning").show();
-						error=true;
-					}
-					if(!error){
-						$("form").submit();
-					}
-				}
-			</script>
+ 			<script src="js/jquery-3.2.1.min.js"></script>
+ 			<script type="text/javascript" src="js/form-insert-new-city.js"></script>
+ 			<link href="css/style.css" rel="stylesheet" type="text/css">
 		</head>
 
 		<body>
@@ -47,21 +22,21 @@
 			<h3>Inserisci una nuova citt&#224</h3>
 			<h4>Tutti i campi sono obbligatori!</h4>
 			<form action="form_insert_new_city">
-				Nome della citt&#224:
-				<input type="text" id="cityName" name="cityName" size="20px">
-				<p id="cityNameWarning" style="display:none;color:red;font-size:75%;">*Il nome della citt&#224 &#232 un campo obbligatorio.</p>
-				<br> Nazione:
+				<p>Nome della citt&#224:
+				<input type="text" id="cityName" name="cityName" size="20px"></p>
+				<p id="cityNameWarning" class="warning">*Il nome della citt&#224 &#232 un campo obbligatorio.</p>
+				<br><p>Nazione:
 				<select id="countryCode" name="countryCode" onchange="">
 					<c:forEach items="${countryList}" var="country">
 						<option value="${country.code}">${country.name}</option>
 					</c:forEach>
-				</select>
-				<br> Popolazione:
-				<input type="number" id="cityPopulation" name="cityPopulation" size="20px">
-				<p id="cityPopulationWarning" style="color:red;font-size:75%;display:none;">*La popolazione &#232 un campo obbligatorio.</p>
-				<br> Regione:
-				<input type="text" id="cityDistrict" name="cityDistrict" size="20px">
-				<p id="cityDistrictWarning" style="color:red;font-size:75%;display:none;">*Il nome della regione &#232 un campo obbligatorio.</p>
+				</select></p>
+				<br><p>Popolazione:
+				<input type="number" id="cityPopulation" name="cityPopulation" size="20px"></p>
+				<p id="cityPopulationWarning" class="warning">*La popolazione &#232 un campo obbligatorio.</p>
+				<br><p>Regione:
+				<input type="text" id="cityDistrict" name="cityDistrict" size="20px"></p>
+				<p id="cityDistrictWarning" class="warning">*Il nome della regione &#232 un campo obbligatorio.</p>
 				<br>
 				<br>
 				<input type="button" value="Conferma inserimento" onclick="javascript:validateForm()">

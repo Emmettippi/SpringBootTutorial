@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+.warning{
+	color: red;
+	font-size: 75%;
+	display: none;
+}
+
+p{
+	text-align: justify;
+	margin: 2px 5px;
+}
+
+input:focus{
+	background-color: yellow;
+}
