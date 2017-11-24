@@ -21,17 +21,17 @@ input:focus{
 }
 
 button.edit{
-	width: 50px;
-	height: 24px;
-	background-image: url("../img/edit.png");
+	width: 42px;
+	height: 26px;
+	background: url("../img/edit.png") no-repeat;
 	background-position: center;
 	background-color: #00cc00;
 }
 
 button.delete{
-	width: 50px;
-	height: 24px;
-	background-image: url("../img/delete.png");
+	width: 42px;
+	height: 26px;
+	background: url("../img/delete.png") no-repeat;
 	background-position: center;
 	background-color: #ff0000;
 }

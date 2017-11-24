@@ -73,10 +73,3 @@ function delCity(continent,country,id){
 		getCityListByCountry(continent,country);
 	}
 }
-
-function isOriginalCountry(countryCode,cityCountryCode){
-	if(countryCode==cityCountryCode){
-		return "selected";
-	}
-	return "";
-}

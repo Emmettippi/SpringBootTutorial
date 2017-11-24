@@ -25,9 +25,9 @@
 	<br>
 	<p>
 		Nazione: <select id="countryCode" name="countryCode">
+		<option></option>
 			<c:forEach items="${countryList}" var="_country">
-				<option value="${_country.code}"
-					selected="javascript:isOriginalCountry(${_country.code},${city.country.code})">${_country.name}</option>
+				<option value="${_country.code}" ${_country.code==city.country.code ? 'selected' : '' }>${_country.name}</option>
 			</c:forEach>
 		</select>
 	</p>
