@@ -12,11 +12,15 @@
 	<script type="text/javascript" src="js/country-list-by-continent.js"></script>
 	<script type="text/javascript" src="js/city-list-by-country.js"></script>
 	<script type="text/javascript" src="js/model.js"></script>
+	<script type="text/javascript" src="js/Cards.js"></script>
+	<script type="text/javascript" src="js/Pagination.js"></script>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<!-- BOOTSTRAP -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1>Ajax World Project</h1>
 	<button onclick="window.location.href='form_insert_city?id=0'">Inserisci una nuova citt&#224</button><br>
-	<div id="output"></div>
+	<div class="container-fluid" id="theContainer"></div>
 </body>
 </html>

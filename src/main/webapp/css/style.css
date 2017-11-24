@@ -35,3 +35,8 @@ button.delete{
 	background-position: center;
 	background-color: #ff0000;
 }
+
+h1{
+	font: calibri;
+	font-weight: bold;
+}

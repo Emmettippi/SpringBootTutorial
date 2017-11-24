@@ -26,7 +26,7 @@ function validateForm(id){
 		$("#cityDistrictWarning").show();
 		error=true;
 	}
-	
+
 	if(!error){
 		$(".errorMessage").hide();
 		var city=newCity();
@@ -58,18 +58,17 @@ function validateForm(id){
 }
 
 function delCity(continent,country,id){
-	if(confirm("Sei sicuro di voler procedere?")){
-		$.ajax({
-			url:"/world/api/city/"+id+"/delete_city_by_id",
-			type: "GET"
-		}).done(function(result){
-			if(result){
-				alert("Eliminazione eseguita con successo.");
-			}
-			else{
-				alert("Qualcosa &#232 andato storto durante l'operazione.");
-			}
-		});
-		getCityListByCountry(continent,country);
-	}
+	$.ajax({
+		url:"/world/api/city/"+id+"/delete_city_by_id",
+		type: "GET"
+	}).done(function(result){
+		if(result){
+			alert("Eliminazione eseguita con successo.");
+		}
+		else{
+			alert("Qualcosa &#232 andato storto durante l'operazione.");
+		}
+	});
+	getCityListByCountry(continent,JSON.stringify(country));
+
 }

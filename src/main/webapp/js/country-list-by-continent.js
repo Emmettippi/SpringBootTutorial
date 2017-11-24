@@ -1,12 +1,15 @@
 function setCountryListByContinent(continent,data){
 	var countryList = "";
-	countryList+= "<p>Il continente "+continent+" possiede le seguenti nazioni:</p>";
-	countryList+="<button onclick='javascript:getContinentList()'>Torna indietro</button>";
-	countryList+="<ul>";
+	countryList+="<p>" +
+			"<a class='btn btn-info' href='javascript:getContinentList()'>Indietro</a> " +
+			"Il continente " +
+			continent +
+			" possiede le seguenti nazioni:</p>";
+	countryList+="<div class='row'>";
 	for(var i=0;i<data.length;i++){
-		countryList+="<li><a href='javascript:getCityListByCountry(\""+continent+"\","+JSON.stringify(data[i])+")'>"+data[i].name+"</a></li>";
+		countryList+=getContinentCard(continent,data[i]);
 	}
-	countryList+="</ul>";
+	countryList+="</div>";
 	return countryList;
 }
 

@@ -1,9 +1,10 @@
 function setContinentList(data){
-	var continentList="<ul>";
+	var continentList="";
+	continentList+="<div class='row'>";
 	for(var i=0;i<data.length;i++){
-		continentList+="<li><a href='javascript:getCountryListByContinent(\""+data[i]+"\")'>"+data[i]+"</a></li>";
+		continentList+=getContinentCard(data[i]);
 	}
-	continentList+="</ul>";
+	continentList+="</div>";
 	return continentList;
 }
 
@@ -12,7 +13,7 @@ function getContinentList(){
 		url: "/world/api/country/show_continent_list",
 		type: "GET"
 	}).done(function(continentList){
-		$("#output").html(setContinentList(continentList));
+		$("#theContainer").html(setContinentList(continentList));
 	});
 }
 
