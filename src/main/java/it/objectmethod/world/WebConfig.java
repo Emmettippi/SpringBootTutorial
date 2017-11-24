@@ -28,6 +28,9 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	
 	@Value("${frontend.css.path}")
 	private String cssPath;
+	
+	@Value("${frontend.img.path}")
+	private String imgPath;
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -37,10 +40,10 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		}
 		if (!registry.hasMappingForPattern("/css/**")) {
 			registry.addResourceHandler("/css/**").addResourceLocations("file:"+cssPath);
-		}/*
-        if (!registry.hasMappingForPattern("/webjars/**")) {
-            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-        }*/
+		}
+		if (!registry.hasMappingForPattern("/img/**")) {
+			registry.addResourceHandler("/img/**").addResourceLocations("file:"+imgPath);
+		}
 	}
 
 	@Bean

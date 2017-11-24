@@ -6,6 +6,11 @@
 	display: none;
 }
 
+.errorMessage{
+	color: red;
+	display: none;
+}
+
 p{
 	text-align: justify;
 	margin: 2px 5px;
@@ -13,4 +18,20 @@ p{
 
 input:focus{
 	background-color: yellow;
+}
+
+button.edit{
+	width: 50px;
+	height: 24px;
+	background-image: url("../img/edit.png");
+	background-position: center;
+	background-color: #00cc00;
+}
+
+button.delete{
+	width: 50px;
+	height: 24px;
+	background-image: url("../img/delete.png");
+	background-position: center;
+	background-color: #ff0000;
 }
