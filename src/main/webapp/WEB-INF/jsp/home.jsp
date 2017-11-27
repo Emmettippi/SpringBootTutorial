@@ -16,11 +16,17 @@
 	<script type="text/javascript" src="js/Pagination.js"></script>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<!-- BOOTSTRAP -->
+	<script type="text/javascript" src="js/tether.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<link href="css/tether.css" rel="stylesheet" type="text/css">
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<button onclick="window.location.href='form_insert_city?id=0'">Inserisci una nuova citt&#224</button><br>
+	<div class="jumbotron">
+		<h1>AJAX BOOTSTRAP WORLD PROJECT</h1>
+		<p>Con l'aggiunta dei magici css di bootstrap</p>
+	</div>
+	<a href="form_insert_city?id=0" class="btn btn-info">Inserisci una nuova citt&#224</a><br>
 	<div class="container-fluid" id="theContainer"></div>
 </body>
 </html>

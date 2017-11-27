@@ -52,9 +52,6 @@ function validateForm(id){
 			});
 		});
 	}
-	else{
-		$(".errorMessage").show();
-	}
 }
 
 function delCity(continent,country,id){

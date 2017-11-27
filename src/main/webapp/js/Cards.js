@@ -1,11 +1,11 @@
 function getContinentCard(continent){
-	return "<div class='col-sm-4'>" +
+	return "<div class='col-12 col-md-4'>" +
 			"<div class='card bg-light'>" +
 			"<div class='card-body'>" +
 			"<h4 class='card-title'>" +
 			"<a href='javascript:getCountryListByContinent(\""+
 			continent+
-			"\")'' class='card-link'>"+
+			"\")' class='card-link'>"+
 			continent+
 			"</a>" +
 			"</h4>" +
@@ -15,7 +15,7 @@ function getContinentCard(continent){
 }
 
 function getCountryCard(continent,country){
-	return "<div class='col-sm-4'>" +
+	return "<div class='col-md-4'>" +
 			"<div class='card bg-light'>" +
 			"<div class='card-body'>" +
 			"<h4 class='card-title'>" +
@@ -23,7 +23,7 @@ function getCountryCard(continent,country){
 			continent+
 			"\","+
 			JSON.stringify(country)+
-			"\")'' class='card-link'>"+
+			")' class='card-link'>"+
 			country.name+
 			"</a>" +
 			"</h4>" +
@@ -34,14 +34,14 @@ function getCountryCard(continent,country){
 }
 
 function getCityCard(continent,country,city){
-	return "<div class='col-sm-4'>" +
+	return "<div class='col-md-4'>" +
 			"<div class='card bg-light'>" +
 			"<div class='card-body'>" +
 			"<h4 class='card-title'>" +
 			city.name +
 			"</h4>" +
 			"<p>"+city.population+" abitanti</p>" +
-			"<p>"+city.district+" ("+country.id+")</p>" +
+			"<p>"+city.district+" ("+country.code+")</p>" +
 			"<a href='javascript:form_insert_city?id="+
 			city.id+
 			"' class='btn btn-primary'>Modifica</a>" +
@@ -51,7 +51,7 @@ function getCityCard(continent,country,city){
 			"data-toggle='confirmation' " +
 			"data-singleton='true' " +
 			"data-popout='true' " +
-			"data-title='Sei sicuro di voler cancellare " +city.name
+			"data-title='Sei sicuro di voler cancellare " +city.name+
 			"?'>Cancella</a>" +
 			"</div>" +
 			"</div>" +

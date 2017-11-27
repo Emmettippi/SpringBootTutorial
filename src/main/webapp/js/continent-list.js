@@ -12,8 +12,8 @@ function getContinentList(){
 	$.ajax({
 		url: "/world/api/country/show_continent_list",
 		type: "GET"
-	}).done(function(continentList){
-		$("#theContainer").html(setContinentList(continentList));
+	}).done(function(data){
+		$("#theContainer").html(setContinentList(data));
 	});
 }
 

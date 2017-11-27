@@ -2,9 +2,9 @@ function setCityListByConuntry(continent,country,data){
 	var cityList="";
 	cityList+="<p>" +
 			"<a class='btn btn-info' href='javascript:getCountryListByContinent(\""+continent+"\")'>Indietro</a> " +
-			"La nazione " +
+			"La nazione <b>" +
 			country.name +
-			" possiede le seguenti citt&#224:</p>";
+			"</b> possiede le seguenti citt&#224:</p>";
 	cityList+="<div class='row'>";
 	for(var i=0;i<data.length;i++){
 		cityList+=getCityCard(continent,country,data[i]);
@@ -18,6 +18,6 @@ function getCityListByCountry(continent,country){
 		url: "/world/api/city/"+country.code+"/show_city_list",
 		type: "GET"
 	}).done(function(data){
-		$("#output").html(setCityListByConuntry(continent,country,data));
+		$("#theContainer").html(setCityListByConuntry(continent,country,data));
 	});
 }
