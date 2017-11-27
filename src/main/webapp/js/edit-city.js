@@ -11,17 +11,6 @@ function validateForm(id){
 		$("#countryWarning").show();
 		error=true;
 	}
-	if(!error){
-		$.ajax({
-			url: "/world/api/city/"+countrycode+"/"+cityname+"/exists_city",
-			type: "GET"
-		}).done(function(cityExists){
-			if(cityExists && id==0){
-				$("#cityAndCountryWarning").show();
-				error=true;
-			}
-		});
-	}
 	var citypop = $("#cityPopulation").val();
 	if(citypop==undefined || citypop.trim()=='' || isNaN(citypop)){
 		$("#cityPopulationWarning").show();
@@ -32,35 +21,41 @@ function validateForm(id){
 		$("#cityDistrictWarning").show();
 		error=true;
 	}
-
 	if(!error){
-		$(".errorMessage").hide();
-		var city=newCity();
 		$.ajax({
-			url:"/world/api/country/"+countrycode+"/get_country_by_id",
-			type:"GET"
-		}).done(function(_country){
-			city.country=_country;
-			city.id=id;
-			city.name=cityname.trim();
-			city.population=citypop.trim();
-			city.district=citydis.trim();
-			$.ajax({
-				url:"/world/api/city/"+JSON.stringify(city)+"/update_city",
-				type:"GET",
-				error:function(jqXHR, exception){
-					alert("Operazione annullata, qualcosa &#232 andato storto.");
-					window.location.href="home";
-				}
-			}).done(function(result){
-				if(result){
-					alert("Operazione eseguita con successo.");
-				}
-				else{
-					alert("Operazione annullata, qualcosa &#232 andato storto.");
-				}
-			});
-			window.location.href="home";
+			url: "/world/api/city/"+countrycode+"/"+cityname+"/exists_city",
+			type: "GET"
+		}).done(function(cityExists){
+			if(cityExists && id==0){
+				$("#cityAndCountryWarning").show();
+				error=true;
+			}
+			if(!error){
+				$(".errorMessage").hide();
+				var city=newCity();
+				$.ajax({
+					url:"/world/api/country/"+countrycode+"/get_country_by_id",
+					type:"GET"
+				}).done(function(_country){
+					city.country=_country;
+					city.id=id;
+					city.name=cityname.trim();
+					city.population=citypop.trim();
+					city.district=citydis.trim();
+					$.ajax({
+						url:"/world/api/city/"+JSON.stringify(city)+"/update_city",
+						type:"GET"
+					}).done(function(result){
+						if(result){
+							alert("Operazione eseguita con successo.");
+							window.location.href="home";
+						}
+						else{
+							alert("Operazione annullata, qualcosa &#232 andato storto.");
+						}
+					});
+				});
+			}
 		});
 	}
 }
@@ -68,10 +63,7 @@ function validateForm(id){
 function delCity(continent,country,id){
 	$.ajax({
 		url:"/world/api/city/"+id+"/delete_city_by_id",
-		type: "GET",
-		error:function(jqXHR, exception){
-			alert("Operazione annullata, qualcosa &#232 andato storto.");
-		}
+		type: "GET"
 	}).done(function(result){
 		if(result){
 			alert("Eliminazione eseguita con successo.");
