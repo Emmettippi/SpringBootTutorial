@@ -1,30 +1,32 @@
 @charset "ISO-8859-1";
 
-.warning{
+.custom-insert-city-btn {
+	display: block !important;
+	width: 33%;
+	margin: auto;
+}
+
+.warning {
 	color: red;
 	font-size: 75%;
 	display: none;
 }
 
-.errorMessage{
+.errorMessage {
 	color: red;
 	display: none;
 }
 
-.form-input{
-	
-}
-
-p{
+p {
 	text-align: justify;
 	margin: 2px 5px;
 }
 
-input:focus{
+input:focus {
 	background-color: yellow;
 }
 
-button.edit{
+button.edit {
 	width: 42px;
 	height: 26px;
 	background: url("../img/edit.png") no-repeat;
@@ -32,7 +34,7 @@ button.edit{
 	background-color: #00cc00;
 }
 
-button.delete{
+button.delete {
 	width: 42px;
 	height: 26px;
 	background: url("../img/delete.png") no-repeat;
@@ -40,7 +42,13 @@ button.delete{
 	background-color: #ff0000;
 }
 
-h1{
+h1 {
 	font: calibri;
 	font-weight: bold;
+}
+
+@media ( max-width : 768px) {
+	.custom-insert-city-btn {
+		width: 90%;
+	}
 }

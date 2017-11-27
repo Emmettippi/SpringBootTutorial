@@ -29,15 +29,12 @@ public class CityController {
 
 	@Autowired
 	private CountryRepository countryRepo;
-
-	@RequestMapping("/show_city_list_per_country")
-	public String showCityListPerCountry(ModelMap model,
-			@RequestParam("countryCode") String countryCode,
-			@RequestParam("countryName") String countryName) {
-		List<City> cityList = cityRepo.getCityListFromCountry(countryCode);
-		model.put("countryName", countryName);
-		model.put("cityList", cityList);
-		return "CityListPerCountry";
+	
+	@RequestMapping("/home")
+	public String home(ModelMap map) {
+		List<String> contList = countryRepo.getAllContinent();
+		map.addAttribute("continents", contList);
+		return "home";
 	}
 
 	@RequestMapping(value="/form_insert_city",method=RequestMethod.GET)
@@ -52,6 +49,6 @@ public class CityController {
 		}
 		List<Country> countryList = countryRepo.findAll(new Sort("Name"));
 		model.put("countryList", countryList);
-		return "FormInsertCity";
+		return "edit-city";
 	}
 }

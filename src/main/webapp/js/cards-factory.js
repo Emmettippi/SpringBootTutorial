@@ -1,5 +1,5 @@
 function getContinentCard(continent){
-	return "<div class='col-md-4'>" +
+	return "<div class='col-lg-4'>" +
 			"<div class='card bg-light'>" +
 			"<div class='card-body'>" +
 			"<h4 class='card-title'>" +

@@ -7,16 +7,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Aggiorna citt&#224</title>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/form-insert-city.js"></script>
+	<script src="js/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/edit-city.js"></script>
 	<script type="text/javascript" src="js/model.js"></script>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<!-- BOOTSTRAP -->
-	<script type="text/javascript" src="js/popper.min.js"></script>
-	<script type="text/javascript" src="js/tether.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<link href="css/tether.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/bootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/tether.js"></script>
+	<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
+	<link href="css/bootstrap/tether.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>

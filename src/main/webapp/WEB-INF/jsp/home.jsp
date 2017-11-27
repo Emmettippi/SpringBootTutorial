@@ -6,29 +6,33 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Ajax World Project</title>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/form-insert-city.js"></script>
+	
+	<!-- CSS -->
+	<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	
+
+	<!-- JS -->
+	<script src="js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/edit-city.js"></script>
 	<script type="text/javascript" src="js/continent-list.js"></script>
 	<script type="text/javascript" src="js/country-list-by-continent.js"></script>
 	<script type="text/javascript" src="js/city-list-by-country.js"></script>
 	<script type="text/javascript" src="js/model.js"></script>
-	<script type="text/javascript" src="js/Cards.js"></script>
-	<script type="text/javascript" src="js/Pagination.js"></script>
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<!-- BOOTSTRAP -->
-	<script type="text/javascript" src="js/popper.min.js"></script>
-	<script type="text/javascript" src="js/tether.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/bootstrap-confirmation.js"></script>
-	<link href="css/tether.css" rel="stylesheet" type="text/css">
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/cards-factory.js"></script>
+	
+	
+	
+	
 </head>
 <body>
 	<div class="jumbotron">
 		<h1>AJAX BOOTSTRAP WORLD PROJECT</h1>
 		<p>Con l'aggiunta dei magici css di bootstrap</p>
 	</div>
-	<a href="form_insert_city?id=0" class="btn btn-info">Inserisci una nuova citt&#224</a><br><br>
-	<div class="container-fluid" id="theContainer"></div>
+	<a href="form_insert_city?id=0" class="custom-insert-city-btn btn btn-info">Inserisci una nuova citt&#224</a><br><br>
+	<div class="container custom-container" id="theContainer"></div>
 </body>
 </html>
