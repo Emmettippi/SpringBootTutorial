@@ -1,5 +1,5 @@
 function getContinentCard(continent){
-	return "<div class='col-12 col-md-4'>" +
+	return "<div class='col-md-4'>" +
 			"<div class='card bg-light'>" +
 			"<div class='card-body'>" +
 			"<h4 class='card-title'>" +
@@ -42,17 +42,17 @@ function getCityCard(continent,country,city){
 			"</h4>" +
 			"<p>"+city.population+" abitanti</p>" +
 			"<p>"+city.district+" ("+country.code+")</p>" +
-			"<a href='javascript:form_insert_city?id="+
+			"<a href='form_insert_city?id="+
 			city.id+
 			"' class='btn btn-primary'>Modifica</a>" +
-			"<a href='javascript:delCity(\"" +
-			continent+"\","+JSON.stringify(country)+",\""+city.id +
-			"\")' class='btn btn-danger' " +
+			"<a class='btn btn-danger' " +
 			"data-toggle='confirmation' " +
 			"data-singleton='true' " +
 			"data-popout='true' " +
 			"data-title='Sei sicuro di voler cancellare " +city.name+
-			"?'>Cancella</a>" +
+			"?' href='javascript:delCity(\"" +
+			continent+"\","+JSON.stringify(country)+",\""+city.id +
+			"\")'>Cancella</a>" +
 			"</div>" +
 			"</div>" +
 			"</div>";

@@ -65,7 +65,10 @@ function delCity(continent,country,id){
 		else{
 			alert("Qualcosa &#232 andato storto durante l'operazione.");
 		}
+		getCityListByCountry(continent,country);
 	});
-	getCityListByCountry(continent,JSON.stringify(country));
-
 }
+/*
+$("[data-toggle=confirmation]").confirmation({
+	rootSelector: "[data-toggle='confirmation']"
+});*/
