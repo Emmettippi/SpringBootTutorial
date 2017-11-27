@@ -42,17 +42,27 @@ function getCityCard(continent,country,city){
 			"</h4>" +
 			"<p>"+city.population+" abitanti</p>" +
 			"<p>"+city.district+" ("+country.code+")</p>" +
-			"<a href='form_insert_city?id="+
-			city.id+
+			"<a href='form_insert_city?id=" + city.id +
 			"' class='btn btn-primary'>Modifica</a>" +
 			"<a class='btn btn-danger' " +
-			"data-toggle='confirmation' " +
-			"data-singleton='true' " +
-			"data-popout='true' " +
-			"data-title='Sei sicuro di voler cancellare " +city.name+
-			"?' href='javascript:delCity(\"" +
-			continent+"\","+JSON.stringify(country)+",\""+city.id +
-			"\")'>Cancella</a>" +
+			"data-toggle='modal' " +
+			"href='#cityModal" + city.id +
+			"'>Cancella</a>" +
+			"</div>" +
+			"</div>" +
+			"</div>" +
+			"<div class='modal fade' id='cityModal"+city.id+"' role='dialog'>" +
+			"<div class='modal-dialog'>" +
+			"<div class='modal-content'>" +
+			"<div class='modal-header'>" +
+			"<h4 class='modal-title'>Sei sicuro di voler eliminare la citt&#224 di " + city.name + "?</h4>" +
+			"</div>" +
+			"<div class='modal-footer'>" +
+			"<a class='btn btn-danger' href='javascript:delCity(\""+continent+"\"," +
+			JSON.stringify(country) +
+			",\"" + city.id + "\")'>S&#236</a>" +
+			"<a class='btn btn-primary' data-dismiss='modal'>No</a>" +
+			"</div>" +
 			"</div>" +
 			"</div>" +
 			"</div>";
